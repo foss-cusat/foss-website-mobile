@@ -1,8 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: system-ui, sans-serif;
   background: #fff;
   color: #111;
+  overflow-x: hidden;
+}
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding-top: 60px; /* Account for fixed header */
 }
 
 .header {
@@ -50,9 +62,19 @@ body {
 /* Center all text in sections */
 .hero,
 .section {
-  padding: 2rem;
+  padding: 2rem 1rem;
   margin-top: 2rem;
   text-align: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .hero,
+  .section {
+    padding: 1rem 0.5rem;
+    margin-top: 1rem;
+  }
 }
 
 .hero h1 {
@@ -74,13 +96,23 @@ body {
 
 .ascii-art {
   font-family: monospace;
-  font-size: 8px;
+  font-size: clamp(4px, 2vw, 8px);
   line-height: 1.1;
   color: #000000;
   white-space: pre;
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
+  overflow-x: auto;
+  word-break: break-all;
+}
+
+@media (max-width: 768px) {
+  .ascii-art {
+    font-size: clamp(3px, 1.5vw, 6px);
+    transform: scale(0.8);
+    transform-origin: center;
+  }
 }
 
 .btn {
@@ -104,11 +136,13 @@ body {
 }
 
 .footer {
+  width: 100%;
   padding: 1rem;
   background: #000;
   color: #fff;
   text-align: center;
   font-size: 0.9rem;
+  margin-top: auto;
 }
 
 .footer a {
